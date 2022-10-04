@@ -1,10 +1,28 @@
 import React from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
     return (
-        <div className="App">
-            <h1>Hello, Viking! Let's go!</h1>
+        <div>
+            <Header/>
+            <Technologies/>
+        </div>
+    );
+}
+
+const Header = () => {
+    return (
+        <div>
+            <a href="#">Home</a>
+            <a href="#">News Feed</a>
+            <a href="#">Messages</a>
+        </div>
+    );
+}
+
+const Technologies = () => {
+    return (
+        <div>
             <ul>
                 <li>html</li>
                 <li>css</li>
@@ -12,6 +30,7 @@ function App() {
                 <li>react</li>
             </ul>
         </div>
+
     );
 }
 
