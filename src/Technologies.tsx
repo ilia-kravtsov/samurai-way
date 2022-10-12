@@ -1,5 +1,5 @@
 import React from "react";
-import App from "./App";
+// import App from "./App";
 
 const Technologies = () => {
     return (
@@ -9,6 +9,7 @@ const Technologies = () => {
                 <li>css</li>
                 <li>js</li>
                 <li>react</li>
+                <li>redux</li>
             </ul>
         </div>
 
