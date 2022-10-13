@@ -11,25 +11,5 @@
     /*grid-gap: 10px;*/
 }
 
-/* grid значит что первые потомки дива с классом app-wrapper (header, nav, div) в файлу App.tsx
+/* grid значит что первые потомки дива с классом app-wrapper (header, nav, div) в файле App.tsx
    будут вести себя как grid элементы */
-
-
-.headers {
-    grid-area: h;
-    background-color: darkgreen;
-}
-
-.headers img {
-    width: 50px;
-}
-
-.navs {
-    grid-area: n;
-    background-color: burlywood;
-}
-
-.content {
-    grid-area: c;
-    background-color: cornflowerblue;
-}
