@@ -10,7 +10,7 @@ type PostType = {
 const Post = (props: PostType) => {
     return (
         <div className={s.item}>
-            <img src='https://i.imgur.com/J9fmQeth.jpg' alt='shelby'/>
+            <img src='https://wantshop.ru/media/tmp/6b79c121716e872a9fb16be3ea0f85ea.jpeg' alt='littleGroot'/>
             {props.message}
             <div>
                 <span>{props.like}</span>

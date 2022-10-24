@@ -6,10 +6,16 @@
     "h h"
     "n c";
 
-    grid-template-rows: 60px 1fr;     /* говорим что есть две колнки и две строки */
+    grid-template-rows: 60px 1fr; /* говорим что есть две колнки и две строки */
     grid-template-columns: 2fr 10fr;
     /*grid-gap: 10px;*/
 }
 
 /* grid значит что первые потомки дива с классом app-wrapper (header, nav, div) в файле App.tsx
    будут вести себя как grid элементы */
+
+.app-wrapper-content {
+    grid-area: c;
+    background-color: cornflowerblue;
+
+}
