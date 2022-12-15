@@ -42,9 +42,9 @@ const Dialogs = () => {
             <div className={s.messages}>
                 <Message message='hi'/>
                 <Message message='how are you?'/>
-                <Message message='whassup?'/>
-                <Message message='whassup?'/>
-                <Message message='whassup?'/>
+                <Message message='whatsup?'/>
+                <Message message='whatsup?'/>
+                <Message message='whatsup?'/>
             </div>
         </div>
     )
