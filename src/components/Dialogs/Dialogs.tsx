@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './Dialogs.module.css'
+import dialogStyle from './Dialogs.module.css'
 import {NavLink} from 'react-router-dom';
 
 type DialogItemType = {
@@ -11,7 +11,7 @@ const DialogItem = (props: DialogItemType) => {
     let path = '/dialogs/' + props.id;
 
     return (
-    <div className={s.dialog + ' ' + s.active}>
+    <div className={dialogStyle.dialog + ' ' + dialogStyle.active}>
         <NavLink to={path}>{props.name}</NavLink>
     </div>
     )
@@ -23,15 +23,15 @@ type MessageType = {
 
 const Message = (props: MessageType) => {
     return (
-        <div className={s.message}>{props.message}</div>
+        <div className={dialogStyle.message}>{props.message}</div>
     )
 
 }
 
 const Dialogs = () => {
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
+        <div className={dialogStyle.dialogs}>
+            <div className={dialogStyle.dialogsItems}>
                 <DialogItem name='ilia' id={1}/>
                 <DialogItem name='oleg' id={2}/>
                 <DialogItem name='ivan' id={3}/>
@@ -39,9 +39,10 @@ const Dialogs = () => {
                 <DialogItem name='artem' id={5}/>
                 <DialogItem name='petr' id={6}/>
             </div>
-            <div className={s.messages}>
+            <div className={dialogStyle.messages}>
                 <Message message='hi'/>
                 <Message message='how are you?'/>
+                <Message message='whatsup?'/>
                 <Message message='whatsup?'/>
                 <Message message='whatsup?'/>
                 <Message message='whatsup?'/>
