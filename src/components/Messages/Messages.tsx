@@ -41,12 +41,12 @@ const Messages = () => {
                 <MessageItem name='petr' id={6}/>
             </div>
             <div className={messagesStyle.messagesContent}>
-                <Message message='hi'/>
-                <Message message='how are you?'/>
-                <Message message='whatsup?'/>
-                <Message message='whatsup?'/>
-                <Message message='whatsup?'/>
-                <Message message='whatsup?'/>
+                <Message message='push me'/>
+                <Message message='and then just touch me'/>
+                <Message message='till i can get my'/>
+                <Message message='satisfaction!'/>
+                <Message message='how are you doing'/>
+                <Message message='whatsss up?'/>
             </div>
         </div>
     )

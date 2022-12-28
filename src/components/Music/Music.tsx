@@ -1,9 +1,10 @@
 import React from 'react'
+import MusicStyle from './Music.module.css'
 
 
 const Music = ( ) => {
     return (
-        <div>
+        <div className={MusicStyle.color}>
             Music
         </div>
     )

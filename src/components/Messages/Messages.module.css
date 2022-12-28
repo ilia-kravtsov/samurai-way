@@ -8,7 +8,7 @@
 }
 
 .messagesItems .active {
-    color: black;
+    color: antiquewhite;
 }
 
 .messagesContent {
@@ -17,11 +17,11 @@
 
 .messageName a {
     text-decoration: none;
-    color: antiquewhite;
+    color: black;
 }
 
 .message {
-    color: antiquewhite;
+    color: black;
 }
 
 

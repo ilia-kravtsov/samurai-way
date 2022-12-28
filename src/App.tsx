@@ -7,7 +7,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import Feed from "./components/Feed/Feed";
+import Video from "./components/Video/Video";
 import Messages from "./components/Messages/Messages";
 
 
@@ -23,7 +23,7 @@ const App = () => {
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    <Route path='/feed' component={Feed}/>
+                    <Route path='/video' component={Video}/>
                 </div>
             </div>
         </BrowserRouter>

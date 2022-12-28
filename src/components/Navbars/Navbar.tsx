@@ -21,7 +21,7 @@ const Navbar = () => {
                 <NavLink to='/settings' activeClassName={navbarStyle.activeLink}>Settings</NavLink>
             </div>
             <div className={navbarStyle.item}>
-                <NavLink to='/feed' activeClassName={navbarStyle.activeLink}>Feed</NavLink>
+                <NavLink to='/video' activeClassName={navbarStyle.activeLink}>Video</NavLink>
             </div>
         </nav>
     );
