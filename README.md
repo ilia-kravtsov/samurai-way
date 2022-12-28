@@ -239,5 +239,76 @@ import {Route} from 'react-router-dom' {} - потому что Route экспо
 <Route path='/dialogs' component={Dialogs}/>
 
 То есть <Route/> анализирует ссылку в адресной строке и если окончание ссылки совпадает с path то отрисовывает
-компоненту указанную в component
+компоненту указанную в component, а первоночально окончание url задаем в блоке со ссылками либо атрибутами href
+либо to
 
+Наша задача изменить адресную строку браузера не перезагружая страничку для этого используется спец тег 
+<NavLink></NavLink>
+NavLink импортируется
+import {NavLink} from 'react-router-dom';
+
+вместо <a href=''></a> используется атрибут to
+<NavLink to='/profile'></NavLink>
+
+NavLink - это компонента у этой компоненты есть свой атрибут to все эти атрибуты по итогу превращаются в props
+NavLink - возвращает тот же самый тег а поэтому если в стилях задать что-либо для a то это применится и к NavLink
+
+На а можно повесить addEventListener - обработчик события, подменить путь в адресной строке на нужный нам
+history api позволяет делать изменения в адресной строке
+а дальше он делает PreventDefault то есть отменяет действие по умолчанию
+у а ссылки действие по умолчанию - отправить на тот путь который отрисован в атрибуте href
+
+NavLink - возвращает ссылку, но я хочу отслеживать клик по тебе и когда по тебе будут кликать я буду
+просто менять адрес в адресной строке браузера но не буду делать редирект перенаправление на эту страничку
+я там сделаю PreventDefault
+
+NavLink - так же добавляет класс active к классическому тегу a, но в реакте все равно нужно будет указывать
+подобное через свойство объекта
+
+Как сказать NavLink чтобы он добавлял активным ссылкам не класс active а тот который мы указали в css
+и для этого у NavLink есть атрибут activeClassName
+
+<NavLink to='/messages' activeClassName={navbarStyle.activeLink}>Messages</NavLink>
+то есть теперь NavLink по умолчанию будет добавлять тот класс который мы указали в css 
+и та ссылка на которой мы находимся станет золотого цвета
+
+React 21 
+
+Создаем css для messages
+
+создаем 2 колонки в одной имена в другой сообщения 
+в messages 2 колонки - значит 2 div
+каждое имя - отдельная div
+
+Задаем классы для всех div 
+глобальная div className='messages'
+ее потомок div className='messagesItems'
+и конкретное имя div className='item'
+
+Вторая колонка/div
+div className='messages'
+
+Переключение между вкладками webstorm ctrl alt -> <-
+
+меняем классы в виде строк на модули
+
+ <div className={messagesStyle.messages}></div>
+ <div className={messagesStyle.messagesItems}></div>
+
+ <div className={messagesStyle.messages}></div>
+в css для обертки messages говорим что она является gridом
+
+messages {
+    display: grid;
+}
+
+и если в app варианте мы использовали подход grid-template-areas 
+Здесь мы скажем что наш grid состоит из 2-х колонок
+1 колонка занимает 2 фракции 
+2 колонка занимает 10 фракций
+
+grid-template-columns: 2fr 10fr;
+
+Добавляем к одному из диалогов класс active через конкатенацию
+
+<div className={messagesStyle.dialog + ' ' + messagesStyle.active}></div>

@@ -15,6 +15,5 @@
 
 .app_wrapper_content {
     grid-area: content;
-    background-color: cornflowerblue;
-
+    background-color: forestgreen;
 }

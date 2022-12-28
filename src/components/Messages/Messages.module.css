@@ -1,0 +1,27 @@
+.messages {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.messagesItems{
+   padding: 10px;
+}
+
+.messagesItems .active {
+    color: black;
+}
+
+.messagesContent {
+    padding: 10px;
+}
+
+.messageName a {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.message {
+    color: antiquewhite;
+}
+
+
