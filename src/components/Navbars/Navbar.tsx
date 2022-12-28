@@ -2,37 +2,33 @@ import React from 'react';
 import navbarStyle from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
 
+type NavItemType = {
+    itemName: string;
+    urlName: string;
+}
+
+const NavItem = (props: NavItemType) => {
+    return (
+        <div className={navbarStyle.item}>
+            <NavLink to={props.urlName} activeClassName={navbarStyle.activeLink}>{props.itemName}</NavLink>
+        </div>
+    )
+}
+
 const Navbar = () => {
     return (
         <nav className={navbarStyle.navs}>
-            <div className={navbarStyle.item}>
-                <NavLink to='/profile' activeClassName={navbarStyle.activeLink}>Profile</NavLink>
-            </div>
-            <div className={`${navbarStyle.item} ${navbarStyle.active}`}>
-                <NavLink to='/messages' activeClassName={navbarStyle.activeLink}>Messages</NavLink>
-            </div>
-            <div className={navbarStyle.item}>
-                <NavLink to='/news' activeClassName={navbarStyle.activeLink}>News</NavLink>
-            </div>
-            <div className={navbarStyle.item}>
-                <NavLink to='/music' activeClassName={navbarStyle.activeLink}>Music</NavLink>
-            </div>
-            <div className={navbarStyle.item}>
-                <NavLink to='/settings' activeClassName={navbarStyle.activeLink}>Settings</NavLink>
-            </div>
-            <div className={navbarStyle.item}>
-                <NavLink to='/video' activeClassName={navbarStyle.activeLink}>Video</NavLink>
-            </div>
+            <NavItem urlName='/profile' itemName='Profile' />
+            <NavItem urlName='/messages' itemName='Messages' />
+            <NavItem urlName='/news' itemName='News' />
+            <NavItem urlName='/music' itemName='Music' />
+            <NavItem urlName='/settings' itemName='Settings' />
+            <NavItem urlName='/video' itemName='Video' />
         </nav>
     );
 }
 
 export default Navbar;
 
-/*
-* let c1 = "item";
-* let c2 = "active";
-* let classes = c1 + " " + c2; => the same
-* let classesNew = `${c1} ${c2}` => the same
-*/
+
 

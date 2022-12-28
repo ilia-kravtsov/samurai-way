@@ -37,7 +37,7 @@ const Messages = () => {
                 <MessageItem name='oleg' id={2}/>
                 <MessageItem name='ivan' id={3}/>
                 <MessageItem name='anna' id={4}/>
-                <MessageItem name='artem' id={5}/>
+                <MessageItem name='ilai' id={5}/>
                 <MessageItem name='petr' id={6}/>
             </div>
             <div className={messagesStyle.messagesContent}>
@@ -45,7 +45,7 @@ const Messages = () => {
                 <Message message='and then just touch me'/>
                 <Message message='till i can get my'/>
                 <Message message='satisfaction!'/>
-                <Message message='how are you doing'/>
+                <Message message='how are you doing?'/>
                 <Message message='whatsss up?'/>
             </div>
         </div>
