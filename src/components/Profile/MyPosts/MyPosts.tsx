@@ -2,10 +2,14 @@ import React from 'react';
 import myPostsStyle from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const myPostData = [
+let postsData = [
     {id: 1, message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
     {id: 2, message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
 ]
+
+let postsDataContent = postsData.map( p =>
+    <Post message={p.message} likesCount={p.likesCount} disLikesCount={p.disLikesCount}/>
+);
 
 const MyPosts = () => {
     return (
@@ -20,8 +24,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={myPostsStyle.posts}>
-                <Post message={myPostData[0].message} likesCount={myPostData[0].likesCount} disLikesCount={myPostData[0].disLikesCount}/>
-                <Post message={myPostData[1].message} likesCount={myPostData[1].likesCount} disLikesCount={myPostData[1].disLikesCount}/>
+                {postsDataContent}
             </div>
         </div>
     );
