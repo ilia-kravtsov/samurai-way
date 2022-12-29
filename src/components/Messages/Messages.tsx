@@ -12,9 +12,9 @@ const MessageItem = (props: MessageItemType) => {
     let path = '/messages/' + props.id;
 
     return (
-    <div className={messagesStyle.messageName}>
-        <NavLink to={path} activeClassName={messagesStyle.active}>{props.name}</NavLink>
-    </div>
+        <div className={messagesStyle.messageName}>
+            <NavLink to={path} activeClassName={messagesStyle.active}>{props.name}</NavLink>
+        </div>
     )
 }
 
@@ -29,24 +29,44 @@ const Message = (props: MessageType) => {
 
 }
 
+
 const Messages = () => {
+
+    const messagesItemData = [
+        {id: 1, name: 'ilia'},
+        {id: 2, name: 'oleg'},
+        {id: 3, name: 'ivan'},
+        {id: 4, name: 'anna'},
+        {id: 5, name: 'ilai'},
+        {id: 6, name: 'petr'},
+    ];
+
+    const message = [
+        {id: 1, message: 'push me'},
+        {id: 2, message: 'and then just touch me'},
+        {id: 3, message: 'till i can get my'},
+        {id: 4, message: 'satisfaction!'},
+        {id: 5, message: 'how are you doing?'},
+        {id: 6, message: 'whatsss up?'},
+    ];
+
     return (
         <div className={messagesStyle.messages}>
             <div className={messagesStyle.messagesItems}>
-                <MessageItem name='ilia' id={1}/>
-                <MessageItem name='oleg' id={2}/>
-                <MessageItem name='ivan' id={3}/>
-                <MessageItem name='anna' id={4}/>
-                <MessageItem name='ilai' id={5}/>
-                <MessageItem name='petr' id={6}/>
+                <MessageItem name={messagesItemData[0].name} id={messagesItemData[0].id}/>
+                <MessageItem name={messagesItemData[1].name} id={messagesItemData[1].id}/>
+                <MessageItem name={messagesItemData[2].name} id={messagesItemData[2].id}/>
+                <MessageItem name={messagesItemData[3].name} id={messagesItemData[3].id}/>
+                <MessageItem name={messagesItemData[4].name} id={messagesItemData[4].id}/>
+                <MessageItem name={messagesItemData[5].name} id={messagesItemData[5].id}/>
             </div>
             <div className={messagesStyle.messagesContent}>
-                <Message message='push me'/>
-                <Message message='and then just touch me'/>
-                <Message message='till i can get my'/>
-                <Message message='satisfaction!'/>
-                <Message message='how are you doing?'/>
-                <Message message='whatsss up?'/>
+                <Message message={message[0].message}/>
+                <Message message={message[1].message}/>
+                <Message message={message[2].message}/>
+                <Message message={message[3].message}/>
+                <Message message={message[4].message}/>
+                <Message message={message[5].message}/>
             </div>
         </div>
     )
