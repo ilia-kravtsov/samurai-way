@@ -681,3 +681,125 @@ export default Messages
 
 массив называем множественным числом например posts а элемент к которому обращаемся через map - p
 таким образом будет понятно что речь идет о посте
+
+React 26 
+
+ctrl+shift+n - найти файл по названию 
+
+                                                                           BLL business logic layer
+                                                                           уровень бизнес логики
+UI User interface 
+пользовательский интерфейс
+React                                                                      Redux
+Компонента принимает через пропсы входные данные
+и на основе этих данных возвращает соответствующую
+jsx разметку
+
+Данные в React приходят из Business Logic Layer, некоторой части кода где эти данные хранятся
+Layer - набор каких-то функций и файлов который отвечают за отрисовку user interface
+
+BLL - набор файлов функций что отвечает за хранение данных
+Данные приходят из BLL
+В качестве BLL выступает Redux
+Redux является логикой именно в redux будет храниться истина
+и на базе этой истины будет перерисовываться user interface
+redux - главный 
+Задача UI просто отрисовывать компоненты
+Как только в redux в BLL поменяются какие-то данные (состояние) 
+профиль обновится компонента UI перерисуется
+
+index.tsx - отдельный файл который в принципе к UI не относится 
+это отдельный файл который является началом
+
+UI Зависит от BLL
+
+Так как у компоненты есть конкретная задача то в ней не должно быть данных
+данные должны быть вне компонент
+У компоненты есть конкретная функция на основе данных на входе отобразить jsx разметку 
+это концепция чистых функций
+
+Данные попадают по итогу в UI но они там не создаются а уже затем попадают в компоненту
+
+React 28 
+
+Компонента это чистая функция это значит что она может работать только с тем что к ней приходит в props
+она не имеет права обращаться к некоторым глобальным вещам
+
+Функция (компонента) работает только с тем что к ней приходит извне в качестве props
+
+Выносим данные из компонент в файл index.tsx и затем прокидываем через props обратно
+
+Данные: 
+
+let postsData = [
+{id: 1, message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
+{id: 2, message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
+];
+
+в теге App добавляем атрибут 
+
+ReactDOM.render(<App postsData={postsData}/>, document.getElementById('root'));
+
+Идём в App и типизируем полученные через атрибут данные
+
+type AppType= {
+postsData: Array<{id: number, message: string, likesCount: number, disLikesCount: number}>;
+}
+
+указываем наименование типизации в качестве параметра функции App
+
+const App = (props: AppType) => {
+   ...
+   return ...
+}
+
+в теге Route
+
+<Route path='/profile' render={() => <Profile postsData={props.postsData}/>}/>
+
+указываем атрибут render={} и помещаем в него callback с необходимой нам компонентой, у которой через props
+прокидываем наши затипизированные данные
+
+<Route path='/profile' render={() => <Profile postsData={props.postsData}/>}/>
+
+идём в Profile  и типизируем полученные через атрибут postsData={props.postsData} данные:
+
+type ProfileType = {
+postsData: Array<{id: number, message: string, likesCount: number, disLikesCount: number}>;
+}
+
+указываем наименование типизации в качестве параметра функции 
+
+const Profile = (props: ProfileType) => {
+    ...
+    return ...
+}
+
+Прокидываем через props наши данные postsData в компоненту MyPosts
+
+const Profile = (props: ProfileType) => {
+    return (
+        <div>
+            <ProfileInfo/>
+            <MyPosts postsData={props.postsData}/>
+        </div>
+    );
+}
+
+Типизируем
+
+type MyPostsType = {
+    postsData: Array<{id: number, message: string, likesCount: number, disLikesCount: number}>
+}
+
+Наименование в параметре 
+
+const MyPosts = (props: MyPostsType) => {}
+
+Обращаемся к данным через props - props.postsData.map данные проходят через метод map
+
+let postsDataContent = props.postsData.map( p =>
+    <Post message={p.message} likesCount={p.likesCount} disLikesCount={p.disLikesCount}/>
+);
+
+it works!

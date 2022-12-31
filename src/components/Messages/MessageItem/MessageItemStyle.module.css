@@ -1,0 +1,9 @@
+.messageItemName a {
+    text-decoration: none;
+    color: black;
+}
+
+.messageItemName .active {
+    color: antiquewhite;
+}
+

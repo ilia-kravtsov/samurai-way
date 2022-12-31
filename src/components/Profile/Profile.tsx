@@ -3,12 +3,14 @@ import profileStyle from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-
-const Profile = () => {
+type ProfileType = {
+    postsData: Array<{id: number, message: string, likesCount: number, disLikesCount: number}>;
+}
+const Profile = (props: ProfileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts postsData={props.postsData}/>
         </div>
     );
 }

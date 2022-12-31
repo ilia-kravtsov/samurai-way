@@ -7,21 +7,9 @@
    padding: 10px;
 }
 
-.messagesItems .active {
-    color: antiquewhite;
-}
-
 .messagesContent {
     padding: 10px;
 }
 
-.messageName a {
-    text-decoration: none;
-    color: black;
-}
-
-.message {
-    color: black;
-}
 
 
