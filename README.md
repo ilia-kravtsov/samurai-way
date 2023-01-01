@@ -803,3 +803,227 @@ let postsDataContent = props.postsData.map( p =>
 );
 
 it works!
+
+React 29
+
+Выносим данные из index.js в отдельный файл state.tsx
+так как по single responsibility index.tsx не должен быть местом где хранятся данные
+
+У нас есть состояние state.tsx мы это состояние прокидываем в ui и оно там отрисовывается
+state.tsx - BLL, из этого бизнес уровня мы берем состояние state.tsx и прокидываем его внутрь компонент
+через пропсы и компоненты UI отрисовываются согласно состоянию
+то есть какое состояние, state первичен, state - главный какое в нем состояние такой UI и получится
+
+изменим state изменится и UI изменится картинка
+
+Упаковываем наши 3 переменные с данными в 1 объект
+
+let messagesItemData = [
+{id: 1, name: 'ilia'},
+{id: 2, name: 'oleg'},
+{id: 3, name: 'ivan'},
+{id: 4, name: 'anna'},
+{id: 5, name: 'ilai'},
+{id: 6, name: 'petr'},
+];
+
+let messageData = [
+{id: 1, message: 'push me'},
+{id: 2, message: 'and then just touch me'},
+{id: 3, message: 'till i can get my'},
+{id: 4, message: 'satisfaction!'},
+{id: 5, message: 'how are you doing?'},
+{id: 6, message: 'whatsss up?'},
+];
+
+let postsData = [
+{id: 1, message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
+{id: 2, message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
+];
+
+->
+
+let state = {
+    messagesItemData: [],
+    messageData: [],
+    postsData: []
+}
+
+дадим этому объекту имя state (соответсвенно названию файла)
+
+этот state мы прокинем внутрь index.js не через пропсы а просто через import
+а уже дальше будем прокидывать через props в App
+state пройдет browser router и в этот момент у state мы заберем messagesItemData messageData
+и прокинем в messages.tsx потому что нет смысла этой компонента отдавать весь стейт
+тоже самое и Profile.tsx туда пойдут только postsData   
+
+Функции нужно давать только то что ей нужно - ничего лишнего, лишнее знание о системе
+
+Чтобы система была контролируемая тестируемая предсказуемая нужно избавиться от всяких глобальных вещей
+мы так делаем когда импортируем что-либо в файл из глобального мира
+поэтому мы и прокидываем данные через props а не импортируем сразу же в нужную компоненту
+импорт функции не считается потому что функцию как раз нужно вызывать в отличие от глобальных данных
+данные не должны быть глобальными 
+
+для данных создадим папку redux в src и в нее поместим наш стейт state.tsx
+Далее в state.tsx поместим все данные которые у нас есть:
+
+messagesItemData: [],
+messageData: [],
+postsData: []
+
+помещаем все данные из всех переменных в одну переменную чтобы упростить import export
+
+let state = {
+    messagesItemData: [],
+    messageData: [],
+    postsData: []
+}
+
+state - объект. React - это функциональное программирование. объект - ООП. wtf.
+В React присутствуют элементы ООП, в данный момент state - это не показатель ООП, 
+в данный момент state это просто объект который просто содержит в себе какие-то данные.
+Функциональное программирование не запрещает объекты. Объект это сложная структура данных.
+Есть приммитивы: числа, строки, boolean. Есть структуры посложнее, массивы, объект.
+Массив тоже является объектом.
+
+В данный момент мы упаковали все данные в state like package.json
+
+exportируем state по дефолу и импортируем его в index.tsx
+и теперь вместо всех атрибутов App добавляем атрибут state={state}
+можем называть appState={state}
+
+и уже в App в атрибутах Messages указать messagesItemData={props.appState.messagesItemData}
+Profile postsData={props.appState.posts}
+
+_______________________________________________ Типизация state:
+
+1 Типизируем в state.tsx каждый подобъект отдельно
+Сначала находим в цепочке вложенности объекта объект с самой глубокой вложенностью, 
+самый дальний по вложенности объект, и типизируем входящие в него пары ключ значение
+
+
+_________________________________________1
+
+let state = {
+messagesItemData:  [
+{id: 1, name: 'ilia'},
+{id: 2, name: 'oleg'},
+{id: 3, name: 'ivan'},
+{id: 4, name: 'anna'},
+{id: 5, name: 'ilai'},
+{id: 6, name: 'petr'},
+],
+messageData: [
+{id: 1, message: 'push me'},
+{id: 2, message: 'and then just touch me'},
+{id: 3, message: 'till i can get my'},
+{id: 4, message: 'satisfaction!'},
+{id: 5, message: 'how are you doing?'},
+{id: 6, message: 'whatsss up?'},
+],
+postsData: [
+{id: 1, message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
+{id: 2, message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
+],
+}
+
+->
+
+type MessagesItemDataType = {
+id: number
+name: string
+}
+
+type MessageDataType = {
+id: number
+message: string
+}
+
+type PostsData = {
+id: number
+message: string
+likesCount: number
+disLikesCount: number
+}
+________________________________________ 2
+
+2 затем типизируем объект в состав которого входят массивы объектов с наименованиями которые мы создали выше
+для каждого подобъекта
+
+type ProfilePageType = {
+    postsData: Array<PostsData>
+}
+
+type MessagesPage = {
+    messagesItemData: Array<MessagesItemDataType>
+    messageData: Array<MessageDataType>
+}
+
+Теперь у нас есть все типы объектов и под объектов которые есть у нас внутри этого state
+
+_________________________________________ 3 
+
+Дальше для проверки добавляем тип для state который мы собрали выше
+
+type StateType = {
+    profilePage: ProfilePageType
+    messagesPage: MessagesPage
+}
+
+и прописываем этот тип для переменной state
+
+let state: StateType = {}
+
+Если ошибок нет двигаем дальше.
+
+_________________________________________ 4
+
+Импортируем state сразу в App и обращаемся к свойствам state без всяких props
+
+import state from './redux/state'
+
+<Messages messagesItemData={state.messagesPage.messagesItemData} messageData={state.messagesPage.messageData}/>}/>
+
+Вопрос по типизации как прокинуть state импортированный в index через пропсы app как его описать и нужно ли
+
+_______________________________________________ The end ____________________________________________________
+
+Делаем структуру state разбивая все данные на ветки для каждой страницы profilePage: messagesPage:
+
+let state: StateType = {
+profilePage: {
+    postsData: [
+        {id: 1, message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
+        {id: 2, message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
+        ],
+},
+messagesPage: {
+    messagesItemData:  [
+        {id: 1, name: 'ilia'},
+        {id: 2, name: 'oleg'},
+        {id: 3, name: 'ivan'},
+        {id: 4, name: 'anna'},
+        {id: 5, name: 'ilai'},
+        {id: 6, name: 'petr'},
+        ],
+    messageData: [
+        {id: 1, message: 'push me'},
+        {id: 2, message: 'and then just touch me'},
+        {id: 3, message: 'till i can get my'},
+        {id: 4, message: 'satisfaction!'},
+        {id: 5, message: 'how are you doing?'},
+        {id: 6, message: 'whatsss up?'},
+        ],
+}
+}
+
+Таким образом мы разбиваем все данные постранично
+
+_____________________________________________________________________________________________________________________
+
+??? 
+В App вместо <Profile postsData={state.profilePage.postsData}/>}/> передаем
+<Profile postsData={state.profilePage}/>}/> - то есть передаем сразу все данные которые будут в будущем появлятся 
+в state и будут относиться к profilePage, то есть указываем чтобы все данные которые мы укажем в 
+state>profilePage 
