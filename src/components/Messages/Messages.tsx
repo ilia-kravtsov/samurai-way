@@ -2,16 +2,16 @@ import React from 'react'
 import messagesStyle from './Messages.module.css'
 import Message from "./Message/Message";
 import MessageItem from "./MessageItem/MessageItem";
+import {MessagesPageType} from '../../redux/state'
 
 type MessagesType = {
-    messagesItemData: Array<{id: number, name: string}>;
-    messageData: Array<{id: number, message: string}>;
+    messagesPageState: MessagesPageType
 }
 
 const Messages = (props: MessagesType) => {
 
-    let messagesItemDataElements = props.messagesItemData.map( companion => <MessageItem id={companion.id} name={companion.name}/>);
-    let messageDataElements = props.messageData.map( dialogContent => <Message message={dialogContent.message}/>)
+    let messagesItemDataElements = props.messagesPageState.companionsData.map(companion => <MessageItem id={companion.id} name={companion.name}/>);
+    let messageDataElements = props.messagesPageState.messageData.map(messageContent => <Message message={messageContent.message}/>)
 
     return (
         <div className={messagesStyle.messages}>

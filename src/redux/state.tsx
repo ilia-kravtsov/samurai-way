@@ -19,14 +19,14 @@ export type ProfilePageType = {
     postsData: Array<PostsData>
 }
 
-type MessagesPage = {
-    messagesItemData: Array<MessagesItemDataType>
+export type MessagesPageType = {
+    companionsData: Array<MessagesItemDataType>
     messageData: Array<MessageDataType>
 }
 
 type StateType = {
     profilePage: ProfilePageType
-    messagesPage: MessagesPage
+    messagesPage: MessagesPageType
 }
 
 let state: StateType = {
@@ -37,7 +37,7 @@ let state: StateType = {
         ],
     },
     messagesPage: {
-        messagesItemData:  [
+        companionsData:  [
             {id: 1, name: 'ilia'},
             {id: 2, name: 'oleg'},
             {id: 3, name: 'ivan'},

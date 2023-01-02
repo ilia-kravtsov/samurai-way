@@ -20,8 +20,8 @@ const App = (props: StateAppType) => {
                 <Header/>
                 <Navbar/>
                 <div className='app_wrapper_content'>
-                    <Route path='/profile' render={() => <Profile profilePage={state.profilePage}/>}/>
-                    <Route path='/messages' render={() => <Messages messagesItemData={state.messagesPage.messagesItemData} messageData={state.messagesPage.messageData}/>}/>
+                    <Route path='/profile' render={() => <Profile profilePageState={state.profilePage}/>}/>
+                    <Route path='/messages' render={() => <Messages messagesPageState={state.messagesPage}/>}/>
                     <Route path='/news' render={() => <News />}/>
                     <Route path='/music' render={() => <Music />}/>
                     <Route path='/settings' render={() => <Settings />}/>
