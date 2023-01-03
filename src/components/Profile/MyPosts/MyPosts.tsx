@@ -12,15 +12,22 @@ const MyPosts = (props: MyPostsType) => {
         <Post message={p.message} likesCount={p.likesCount} disLikesCount={p.disLikesCount}/>
     );
 
+    let newPostElement = React.createRef()
+
+    {/*let addPost = () => {
+        let text = newPostElement.current.value
+        alert(text);
+    }*/}
+
     return (
         <div className={myPostsStyle.postsBlock}>
             <h3>My Posts</h3>
             <div>
                 <div>
-                    <textarea className={myPostsStyle.border_radius}></textarea>
+                    <textarea className={myPostsStyle.border_radius} /*ref={newPostElement}*/></textarea>
                 </div>
                 <div>
-                    <button className={myPostsStyle.border_radius}>Add Post</button>
+                    <button className={myPostsStyle.border_radius} /*onClick={addPost}*/>Add Post</button>
                 </div>
             </div>
             <div className={myPostsStyle.posts}>
