@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {RefObject} from 'react';
 import myPostsStyle from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -9,25 +9,25 @@ type MyPostsType = {
 const MyPosts = (props: MyPostsType) => {
 
     let postsDataContent = props.postsData.map( p =>
-        <Post message={p.message} likesCount={p.likesCount} disLikesCount={p.disLikesCount}/>
+        <Post message={p.message} likesCount={p.likesCount} disLikesCount={p.disLikesCount} key={p.id}/>
     );
 
-    let newPostElement = React.createRef()
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    {/*let addPost = () => {
-        let text = newPostElement.current.value
-        alert(text);
-    }*/}
+    let addPost = () => {
+        let text = newPostElement.current?.value
+        alert(text)
+    }
 
     return (
         <div className={myPostsStyle.postsBlock}>
             <h3>My Posts</h3>
             <div>
                 <div>
-                    <textarea className={myPostsStyle.border_radius} /*ref={newPostElement}*/></textarea>
+                    <textarea className={myPostsStyle.border_radius} ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button className={myPostsStyle.border_radius} /*onClick={addPost}*/>Add Post</button>
+                    <button className={myPostsStyle.border_radius} onClick={addPost}>Add Post</button>
                 </div>
             </div>
             <div className={myPostsStyle.posts}>

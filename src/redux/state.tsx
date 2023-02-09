@@ -27,6 +27,7 @@ export type MessagesPageType = {
 type StateType = {
     profilePage: ProfilePageType
     messagesPage: MessagesPageType
+    sidebar: {}
 }
 
 let state: StateType = {
@@ -53,7 +54,8 @@ let state: StateType = {
             {id: 5, message: 'how are you doing?'},
             {id: 6, message: 'whatsss up?'},
         ],
-    }
+    },
+    sidebar: {}
 }
 
 export type StateAppType = {

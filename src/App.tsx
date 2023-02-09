@@ -11,14 +11,15 @@ import Video from "./components/Video/Video";
 import Messages from "./components/Messages/Messages";
 import state from "./redux/state";
 import {StateAppType} from "./redux/state";
+import Friends from "./components/Friends/Friends";
+
 
 const App = (props: StateAppType) => {
 
     return (
-        <BrowserRouter>
             <div className='app_wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar friendName={state.messagesPage.companionsData}/>
                 <div className='app_wrapper_content'>
                     <Route path='/profile' render={() => <Profile profilePageState={state.profilePage}/>}/>
                     <Route path='/messages' render={() => <Messages messagesPageState={state.messagesPage}/>}/>
@@ -28,7 +29,6 @@ const App = (props: StateAppType) => {
                     <Route path='/video' render={() => <Video />}/>
                 </div>
             </div>
-        </BrowserRouter>
     );
 }
 

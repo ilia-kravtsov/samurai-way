@@ -6,8 +6,8 @@
     "header header"
     "nav content";
     grid-template-rows: 60px 1fr; /* говорим что есть две колонки и две строки */
-    grid-template-columns: 2fr 10fr;
-    /*grid-gap: 10px;*/
+    grid-template-columns: 2.3fr 10fr;
+    grid-gap: 5px;
 }
 
 /* grid значит что первые потомки дива с классом app-wrapper (header, nav, div) в файле App.tsx
