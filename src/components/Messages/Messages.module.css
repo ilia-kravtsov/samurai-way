@@ -5,10 +5,15 @@
 
 .messagesItems{
    padding: 10px;
+   border-right: 1px solid lightgray;
 }
 
 .messagesContent {
     padding: 10px;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    height: 400px;
 }
 
 

@@ -1,18 +1,21 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
-import messageItemStyle from "./MessageItemStyle.module.css";
+import s from "./MessageItemStyle.module.css";
 
 type MessageItemType = {
     name: string;
-    id: number;
+    id: string;
 }
 
 const MessageItem = (props: MessageItemType) => {
     let path = '/messages/' + props.id;
 
     return (
-        <div className={messageItemStyle.messageItemName}>
-            <NavLink to={path} activeClassName={messageItemStyle.active}>{props.name}</NavLink>
+        <div className={s.messageItemName}>
+            <img
+                src="https://avatars.mds.yandex.net/i?id=a69847b56ccbe331769d0552889e756a-5234578-images-thumbs&n=13"
+                alt="Groot" className={s.ava}/>
+            <NavLink to={path} activeClassName={s.active}>{props.name}</NavLink>
         </div>
     )
 }

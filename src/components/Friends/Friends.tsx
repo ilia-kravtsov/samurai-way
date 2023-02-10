@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Friends.module.css'
 
 type FriendName = {
-    friendName: Array<{ id: number, name: string }>
+    friendName: Array<{ id: string, name: string }>
 }
 
 const Friends = (props: FriendName) => {

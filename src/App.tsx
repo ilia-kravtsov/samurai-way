@@ -9,9 +9,8 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Video from "./components/Video/Video";
 import Messages from "./components/Messages/Messages";
-import state from "./redux/state";
+import state, {addPost} from "./redux/state";
 import {StateAppType} from "./redux/state";
-import Friends from "./components/Friends/Friends";
 
 
 const App = (props: StateAppType) => {
@@ -21,7 +20,7 @@ const App = (props: StateAppType) => {
                 <Header/>
                 <Navbar friendName={state.messagesPage.companionsData}/>
                 <div className='app_wrapper_content'>
-                    <Route path='/profile' render={() => <Profile profilePageState={state.profilePage}/>}/>
+                    <Route path='/profile' render={() => <Profile profilePageState={state.profilePage} addPost={addPost}/>}/>
                     <Route path='/messages' render={() => <Messages messagesPageState={state.messagesPage}/>}/>
                     <Route path='/news' render={() => <News />}/>
                     <Route path='/music' render={() => <Music />}/>

@@ -3,7 +3,8 @@ import myPostsStyle from './MyPosts.module.css';
 import Post from './Post/Post';
 
 type MyPostsType = {
-    postsData: Array<{id: number, message: string, likesCount: number, disLikesCount: number}>
+    postsData: Array<{id: string, message: string, likesCount: number, disLikesCount: number}>
+    addPost: any
 }
 
 const MyPosts = (props: MyPostsType) => {
@@ -16,7 +17,7 @@ const MyPosts = (props: MyPostsType) => {
 
     let addPost = () => {
         let text = newPostElement.current?.value
-        alert(text)
+        props.addPost(text)
     }
 
     return (

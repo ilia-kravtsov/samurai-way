@@ -9,7 +9,7 @@ type NavItemType = {
 }
 
 type NavBarType = {
-    friendName: Array<{id: number, name: string}>
+    friendName: Array<{id: string, name: string}>
 }
 
 const Navbar = (props: NavBarType) => {

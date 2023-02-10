@@ -1,15 +1,17 @@
+import {v1} from "uuid";
+
 type MessagesItemDataType = {
-    id: number
+    id: string
     name: string
 }
 
 type MessageDataType = {
-    id: number
+    id: string
     message: string
 }
 
 type PostsData = {
-    id: number
+    id: string
     message: string
     likesCount: number
     disLikesCount: number
@@ -33,29 +35,30 @@ type StateType = {
 let state: StateType = {
     profilePage: {
         postsData: [
-            {id: 1, message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
-            {id: 2, message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
+            {id: v1(), message: 'Hi, how are you?', likesCount: 11, disLikesCount: 1},
+            {id: v1(), message: 'It is my first post',  likesCount: 7, disLikesCount: 2},
         ],
     },
     messagesPage: {
         companionsData:  [
-            {id: 1, name: 'ilia'},
-            {id: 2, name: 'oleg'},
-            {id: 3, name: 'ivan'},
-            {id: 4, name: 'anna'},
-            {id: 5, name: 'ilai'},
-            {id: 6, name: 'petr'},
+            {id: v1(), name: 'ilia'},
+            {id: v1(), name: 'oleg'},
+            {id: v1(), name: 'ivan'},
+            {id: v1(), name: 'anna'},
+            {id: v1(), name: 'ilai'},
+            {id: v1(), name: 'petr'},
         ],
         messageData: [
-            {id: 1, message: 'push me'},
-            {id: 2, message: 'and then just touch me'},
-            {id: 3, message: 'till i can get my'},
-            {id: 4, message: 'satisfaction!'},
-            {id: 5, message: 'how are you doing?'},
-            {id: 6, message: 'whatsss up?'},
+            {id: v1(), message: 'push me'},
+            {id: v1(), message: 'and then just touch me'},
         ],
     },
     sidebar: {}
+}
+
+export let addPost = (postMessage: string) => {
+    let newPost = {id: v1(), message: postMessage}
+    state.messagesPage.messageData.push(newPost)
 }
 
 export type StateAppType = {
