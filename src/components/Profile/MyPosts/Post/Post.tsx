@@ -2,20 +2,33 @@ import React from "react";
 import postStyle from './Post.module.css';
 
 type PostType = {
-    message: string;
-    likesCount: number;
-    disLikesCount: number;
+    message: string
+    likesCount: number
+    disLikesCount: number
+    images: Array<string>
+    index: number
+    onLikeHandler: (index: number) => void
+    onDisLikeHandler: (index: number) => void
 }
 
 const Post = (props: PostType) => {
+
+    const onLikeHandler = () => {
+        props.onLikeHandler(props.index)
+    }
+
+    const onDisLikeHandler = () => {
+        props.onDisLikeHandler(props.index)
+    }
+
     return (
         <div className={postStyle.item}>
-            <img src='https://wantshop.ru/media/tmp/6b79c121716e872a9fb16be3ea0f85ea.jpeg' alt='littleGroot'/>
+            <img src={props.images[0]} alt='littleGroot'/>
             <span className={postStyle.span}>{props.message}</span>
             <div className='margin_left'>
-                <button className={`${postStyle.margin_inline_end} ${postStyle.border_radius}`}>Like</button>
+                <button onClick={onLikeHandler} className={`${postStyle.margin_inline_end} ${postStyle.border_radius}`}>Like</button>
                 <span>{props.likesCount}</span>
-                <button className={`${postStyle.margin_inline_end} ${postStyle.margin_left} ${postStyle.border_radius}`}>Dislike</button>
+                <button onClick={onDisLikeHandler} className={`${postStyle.margin_inline_end} ${postStyle.margin_left} ${postStyle.border_radius}`}>Dislike</button>
                 <span>{props.disLikesCount}</span>
             </div>
         </div>

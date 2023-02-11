@@ -1,25 +1,35 @@
 import React, {useEffect, useRef, useState} from 'react';
 import s from './MessageSender.module.css'
 
-const MessageSender = () => {
+type MessageSenderType = {
+    myNewMessageText: string
+    addMyNewMessage: () => void
+    updateMyNewMessage: (myNewMessageText: string) => void
+}
+
+const MessageSender = (props: MessageSenderType) => {
 
     let textareaS = s.textareaS
     let btnS = s.btnS
     let inpBtnContainer = s.inpBtnContainer
 
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
+    let myNewMessage = React.createRef<HTMLTextAreaElement>()
 
-    let addPost = () => {
-        let text = newPostElement.current?.value
-        alert(text)
+    let addPost = () => props.addMyNewMessage()
+
+    let onMyNewMessageHandler = () => {
+        if (myNewMessage.current) {
+            let myNewMessageText = myNewMessage.current.value
+            props.updateMyNewMessage(myNewMessageText)
+        }
     }
 
     return (
         <div className={s.container}>
-            <span className={inpBtnContainer}>
-                <textarea ref={newPostElement} className={textareaS}></textarea>
+            <div className={inpBtnContainer}>
+                <textarea ref={myNewMessage} className={textareaS} onChange={onMyNewMessageHandler} value={props.myNewMessageText}></textarea>
                 <button onClick={addPost} className={btnS}>Send</button>
-            </span>
+            </div>
         </div>
     );
 };

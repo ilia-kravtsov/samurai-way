@@ -6,13 +6,17 @@ import {MessagesPageType} from '../../redux/state'
 import MessageSender from "./MessageSender/MessageSender";
 
 type MessagesType = {
-    messagesPageState: MessagesPageType
+    messagesPage: MessagesPageType
+    images: Array<string>
+    addMyNewMessage: () => void
+    updateMyNewMessage: (myNewMessageText: string) => void
+    myNewMessageText: string
 }
 
 const Messages = (props: MessagesType) => {
 
-    let messagesItemDataElements = props.messagesPageState.companionsData.map(companion => <MessageItem id={companion.id} name={companion.name}/>);
-    let messageDataElements = props.messagesPageState.messageData.map(messageContent => <Message id={messageContent.id} message={messageContent.message}/>)
+    let messagesItemDataElements = props.messagesPage.companionsData.map(companion => <MessageItem id={companion.id} name={companion.name} images={props.images}/>);
+    let messageDataElements = props.messagesPage.messageData.map((messageContent, i) => <Message id={messageContent.id} message={messageContent.message} images={props.images} index={i}/>)
 
     return (
         <div className={messagesStyle.messages}>
@@ -21,7 +25,7 @@ const Messages = (props: MessagesType) => {
             </div>
             <div className={messagesStyle.messagesContent}>
                 {messageDataElements}
-                <MessageSender/>
+                <MessageSender myNewMessageText={props.messagesPage.myNewMessageText} addMyNewMessage={props.addMyNewMessage} updateMyNewMessage={props.updateMyNewMessage}/>
             </div>
         </div>
     )

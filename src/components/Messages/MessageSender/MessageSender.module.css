@@ -1,15 +1,15 @@
 .container {
     display: flex;
     align-items: flex-end;
-    margin-left: -50px;
+    margin-left: 150px;
     /*border: 1px solid red;*/
-    width: 400px;
 }
 
 .inpBtnContainer {
     display: flex;
-    align-items: flex-start;
+    width: 400px;
     margin-left: 50px;
+    margin-top: 330px;
     /*border: 1px solid blue;*/
 }
 

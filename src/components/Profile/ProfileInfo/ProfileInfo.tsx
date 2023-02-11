@@ -1,15 +1,19 @@
 import React from 'react';
-import ProfileInfoStyle from './ProfileInfo.module.css';
+import s from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+type ProfileInfo = {
+    images: Array<string>
+}
+
+const ProfileInfo = (props: ProfileInfo) => {
     return (
         <div>
             <div>
                 <img
-                    src="https://avatars.mds.yandex.net/i?id=a69847b56ccbe331769d0552889e756a-5234578-images-thumbs&n=13"
-                    alt="Groot"/>
+                    src={props.images[1]}
+                    alt="Groot" className={s.ava}/>
             </div>
-            <div className={ProfileInfoStyle.descriptionBlock}>
+            <div className={s.descriptionBlock}>
                 ava + description
             </div>
 

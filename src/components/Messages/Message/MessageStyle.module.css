@@ -3,16 +3,26 @@
     display: flex;
     max-height: 80px;
     align-items: flex-end;
-    order: 1;
+    margin-left: 600px;
+    margin-top: 20px;
 }
 
 .txtAndAvaHim {
-    margin-top: 100px;
     /*border: 1px solid red;*/
     display: flex;
     flex-direction: row-reverse;
     max-height: 50px;
     align-items: flex-end;
+    margin-top: 50px;
+}
+
+.txtAndAvaMeNew {
+    /*border: 1px solid red;*/
+    display: flex;
+    max-height: 80px;
+    align-items: flex-end;
+    margin-left: 600px;
+    margin-top: 20px;
 }
 
 .txtMe {
@@ -58,4 +68,5 @@
     height: 15px;
     background: radial-gradient(circle at 0 0, rgba(0,0,0,0) 15px, rgba(0,102,204)0);
 }
+
 
